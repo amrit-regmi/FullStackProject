@@ -9,13 +9,13 @@ const Button = ({onClick,text}) => (
 const Statistic = ({text,value})=>{
   
   if (text === "average"){
-    return ( <div> average : {(value.good * 1 + value.bad*-1)/value.total}</div>)
+    return (<tr><td>average :</td><td>{(value.good * 1 + value.bad*-1)/value.total}</td></tr>)
   }
   if(text ==="positive"){
-    return (<div> positive: {(value.good*100)/value.total} %</div>)
+    return (<tr><td>positive:</td><td>{(value.good*100)/value.total} %</td></tr>)
   }
   
-  return (<div>{text}: {value}</div>)
+  return (<tr><td>{text}:</td><td>{value}</td></tr>)
   
 
 }
@@ -31,12 +31,16 @@ const Statistics = ({good,neutral,bad}) => {
   return(
     <div>
       <h1>Statistics</h1>
-      <Statistic text= "good" value = {good}/>
-      <Statistic text= "neutral" value = {neutral}/>
-      <Statistic text= "bad" value = {bad}/>
-      <Statistic text= "total" value = {total}/>
-      <Statistic text= "average" value = {{total: total, good: good, bad: bad}}/>
-      <Statistic text= "positive" value = {{total: total, good: good}}/>
+      <table>
+        <tbody>
+          <Statistic text= "good" value = {good}/>
+          <Statistic text= "neutral" value = {neutral}/>
+          <Statistic text= "bad" value = {bad}/>
+          <Statistic text= "total" value = {total}/>
+          <Statistic text= "average" value = {{total: total, good: good, bad: bad}}/>
+          <Statistic text= "positive" value = {{total: total, good: good}}/>
+          </tbody>
+      </table>
     </div>
   )
 
