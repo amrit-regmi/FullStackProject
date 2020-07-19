@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.success {
+  background-color:rgba(189, 245, 231, 0.479);
+  color:green;
+  width:50%;
+  padding:10px;
+  border: 2px solid green;
+}
+.error {
+  background-color:rgba(224, 194, 194, 0.479);
+  color:red;
+  width:50%;
+  padding:10px;
+  border: 2px solid red;
+}
