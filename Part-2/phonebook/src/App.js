@@ -37,12 +37,15 @@ const App = () => {
         return
       }
         
-      if (duplicate.name.toLowerCase()=== newName.toLocaleLowerCase()){
+      if (duplicate.name.toLowerCase()=== newName.toLowerCase()){
         if(window.confirm(`${newName} is already added to phonebook, replace old number with new one? ` )){
             const updatedPerson = { ...duplicate, number: newNumber}
             phonebookService.updatePerson(updatedPerson).then(r => {
               setPersons(persons.map(p => p.id !== updatedPerson.id ? p : r))
+              
             }).then(()=>{
+              setNewName('') 
+              setNewNumber('')
               setNotifications([{id: 1, type:'success',message:`Replaced old number for ${newName} with ${newNumber}`}])
               setTimeout(() => {
                 setNotifications(null)
@@ -57,7 +60,10 @@ const App = () => {
           const updatedPerson = { ...duplicate, name: newName}
           phonebookService.updatePerson(updatedPerson).then(r => {
             setPersons(persons.map(p => p.id !== updatedPerson.id ? p : r))
+            
           }).then(()=>{
+            setNewName('') 
+            setNewNumber('')
             setNotifications([{id: 1 ,type:'success',message:`Replaced contact name for ${newNumber} with ${newName}`}])})
             setTimeout(() => {
               setNotifications(null)
